@@ -1,30 +1,16 @@
 #include "main.h"
+
 /**
- * _strncpy - copy a string
- * @dest: input value
- * @src: input value
- * @n: input value
+ * _isupper - checks if its uppercase
  *
- * Return: dest
+ * @c: integer to check
+ * Return: 0 or 1
  */
-char *_strncpy(char *dest, char *src, int n)
+
+int _isupper(int c)
 {
-	int j;
-
-
-	j = 0;
-	while (j < n && src[j] != '\0')
-	{
-		dest[j] = src[j];
-		j++;
-	}
-	while (j < n)
-	{
-		dest[j] = '\0';
-		j++;
-	}
-
-
-	return (dest);
+	if (c >= 65 && c <= 90)
+		return (1);
+	else
+		return (0);
 }
-

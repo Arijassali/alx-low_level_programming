@@ -1,32 +1,20 @@
 #include "main.h"
+#include "2-strlen.c"
 /**
- * _strncat - concatenate two strings
- * using at most n bytes from src
- * @dest: input value
- * @src: input value
- * @n: input value
+ * _strncat - join two string up to n bytes
  *
- * Return: dest
+ * @dest: where to copy to
+ * @src: where to copy from
+ * @n: up to n bytes
+ * Return: pointer
  */
+
 char *_strncat(char *dest, char *src, int n)
 {
-	int i;
-	int j;
+	int i, len;
 
-
-	i = 0;
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
-	j = 0;
-	while (j < n && src[j] != '\0')
-	{
-	dest[i] = src[j];
-	i++;
-	j++;
-	}
-	dest[i] = '\0';
+	len = _strlen(dest);
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[len++] = src[i];
 	return (dest);
 }
-
