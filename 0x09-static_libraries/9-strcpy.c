@@ -1,17 +1,16 @@
 #include "main.h"
-
 /**
- * _abs - returns absolute value of a number
- *
- * @n: integer to check for
- *
- * Return: integer absolute value
+ * _strcpy - copy the string pointed to by src to dest
+ * @dest: char to check
+ * @src: char to check
+ * Return: 0 is success
  */
-
-int _abs(int n)
+char *_strcpy(char *dest, char *src)
 {
-	if (n < 0)
-		return (n * -1);
-	else
-		return (n);
+	int a;
+
+	for (a = 0; src[a] != '\0'; a++)
+		dest[a] = src[a];
+	dest[a] = '\0';
+	return (dest);
 }

@@ -1,19 +1,24 @@
 #include "main.h"
-#include "2-strchr.c"
 /**
- * _strpbrk - gets first location of character in string
- *
- * @s: string to check
- * @accept: characters to use
- * Return: pointer
+ * _strpbrk - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
  */
-
 char *_strpbrk(char *s, char *accept)
 {
-	int i;
+		int k;
 
-	for (i = 0; s[i] != '\0'; i++)
-		if (_strchr(accept, s[i]))
-			return (&s[i]);
-	return (0);
+		while (*s)
+		{
+			for (k = 0; accept[k]; k++)
+			{
+			if (*s == accept[k])
+			return (s);
+			}
+		s++;
+		}
+
+	return ('\0');
 }
+
