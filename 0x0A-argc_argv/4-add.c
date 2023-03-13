@@ -1,57 +1,51 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#define UNUSED(x) (void)(x)
-/**
- * StringCheck - checks string
- * @s: string to check
- * Return: boolean
- */
-int StringCheck(char *s)
-{
-	int i = 0;
 
-	for (; s[i] != '\0'; i++)
+/**
+ * main - prints the min number of coins to make change
+ * for an amount of money
+ * @argc: argument count
+ * @argv: arguments
+ * Return: 0
+ */
+int main(int argc, char **argv)
+{
+	int total, count;
+	unsigned int i;
+	char *p;
+	int cents[] = {25, 10, 5, 2};
+
+	if (argc != 2)
 	{
-		if (!isdigit(s[i]))
-		{
-			return (0);
-		}
+		printf("Error\n");
+		return (1);
 	}
-	return (1);
-}
-/**
- * main - main function
- * @argc: argumentc
- * @argv: vector of arguments
- *Return: always 0
- */
-int main(int argc, char  *argv[])
-{
-	int i;
-	int result = 0;
 
-	if (argc > 1)
+	total = strtol(argv[1], &p, 10);
+	count = 0;
+
+	if (!*p)
 	{
-		for (i = 1; i < argc; i++)
+		while (total > 1)
 		{
-			if (StringCheck(argv[i]))
+			for (i = 0; i < sizeof(cents[i]); i++)
 			{
-				result += atoi(argv[i]);
-			}
-			else
-			{
-				printf("Error\n");
-				return (1);
+				if (total >= cents[i])
+				{
+					count += total / cents[i];
+					total = total % cents[i];
+				}
 			}
 		}
-		printf("%d\n", result);
-		return (0);
+		if (total == 1)
+			count++;
 	}
 	else
 	{
-		printf("%d\n", 0);
+		printf("Error\n");
 		return (1);
 	}
+
+	printf("%d\n", count);
+	return (0);
 }
